@@ -5,16 +5,66 @@
   <title>شراء أرقام واتساب</title>
   <style>
     body { font-family: Arial, sans-serif; direction: rtl; text-align: center; }
-    .card { border: 1px solid #ddd; padding: 15px; margin: 15px; display: inline-block; width: 200px; border-radius: 10px; }
+    .card { border: 1px solid #ccc; border-radius: 10px; padding: 15px; margin: 15px; display: inline-block; width: 200px; }
     img { width: 40px; height: 25px; }
-    button { background: green; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+    button { padding: 10px 20px; margin-top: 10px; background: green; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: darkgreen; }
   </style>
 </head>
 <body>
-  <h2>اختر رقم واتساب</h2>
+  <h1>شراء أرقام واتساب</h1>
 
-  <div id="numbers"></div>
+  <div class="card">
+    <img src="https://flagcdn.com/w40/vn.png" alt="فيتنام">
+    <h3>فيتنام</h3>
+    <p>+84xxxxxxxx</p>
+    <p>السعر: 2$</p>
+    <button onclick="buyNumber('فيتنام', '+84xxxxxxxx', 2)">شراء</button>
+  </div>
 
-  <script src="script.js"></script>
+  <div class="card">
+    <img src="https://flagcdn.com/w40/id.png" alt="اندونيسيا">
+    <h3>اندونيسيا</h3>
+    <p>+62xxxxxxxx</p>
+    <p>السعر: 2.5$</p>
+    <button onclick="buyNumber('اندونيسيا', '+62xxxxxxxx', 2.5)">شراء</button>
+  </div>
+
+  <div class="card">
+    <img src="https://flagcdn.com/w40/us.png" alt="أمريكا">
+    <h3>أمريكا</h3>
+    <p>+1xxxxxxxx</p>
+    <p>السعر: 3$</p>
+    <button onclick="buyNumber('أمريكا', '+1xxxxxxxx', 3)">شراء</button>
+  </div>
+
+  <div class="card">
+    <img src="https://flagcdn.com/w40/nl.png" alt="هولندا">
+    <h3>هولندا</h3>
+    <p>+31xxxxxxxx</p>
+    <p>السعر: 3.5$</p>
+    <button onclick="buyNumber('هولندا', '+31xxxxxxxx', 3.5)">شراء</button>
+  </div>
+
+  <div class="card">
+    <img src="https://flagcdn.com/w40/eg.png" alt="مصر">
+    <h3>مصر</h3>
+    <p>+20xxxxxxxx</p>
+    <p>السعر: 1.5$</p>
+    <button onclick="buyNumber('مصر', '+20xxxxxxxx', 1.5)">شراء</button>
+  </div>
+
+  <script>
+    function buyNumber(country, number, price) {
+      let confirmBuy = confirm(`هل تريد شراء رقم ${number} (${country}) بسعر ${price}$ ؟`);
+      if (confirmBuy) {
+        // تخزين بيانات الرقم بالـ localStorage لإرسالها لصفحة التفعيل
+        localStorage.setItem("selectedNumber", number);
+        localStorage.setItem("selectedCountry", country);
+        localStorage.setItem("selectedPrice", price);
+        window.location.href = "activate.html"; // الانتقال لصفحة التفعيل
+      }
+    }
+  </script>
 </body>
 </html>
