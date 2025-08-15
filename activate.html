@@ -5,20 +5,37 @@
   <title>تفعيل الرقم</title>
   <style>
     body { font-family: Arial, sans-serif; direction: rtl; text-align: center; }
-    input { padding: 10px; margin: 5px; width: 200px; }
-    button { background: blue; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+    input { padding: 10px; margin: 10px; width: 200px; }
+    button { padding: 10px 20px; margin-top: 10px; background: blue; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: darkblue; }
   </style>
 </head>
 <body>
-  <h2>تفعيل الرقم</h2>
-  <p>رقمك: <span id="phone"></span></p>
-  <p>انتظر وصول الكود خلال <span id="timer">60</span> ثانية</p>
-
-  <input type="text" id="code" placeholder="ادخل الكود">
-  <button onclick="confirmActivation()">تأكيد التفعيل</button>
-
+  <h1>تفعيل الرقم</h1>
+  <p id="numberInfo"></p>
+  <input type="text" id="phoneNumber" placeholder="الرقم" readonly><br>
+  <input type="text" id="code" placeholder="أدخل الكود"><br>
+  <button onclick="activateNumber()">تفعيل</button>
   <p id="status"></p>
 
-  <script src="script.js"></script>
+  <script>
+    // جلب الرقم من التخزين
+    const number = localStorage.getItem("selectedNumber");
+    const country = localStorage.getItem("selectedCountry");
+    const price = localStorage.getItem("selectedPrice");
+    document.getElementById("numberInfo").innerText = `الرقم: ${number} (${country}) | السعر: ${price}$`;
+    document.getElementById("phoneNumber").value = number;
+
+    function activateNumber() {
+      const code = document.getElementById("code").value;
+      if (!code) {
+        alert("الرجاء إدخال الكود!");
+        return;
+      }
+
+      // هون مستقبلاً منربط مع API Sim5
+      document.getElementById("status").innerText = "✅ تم التفعيل بنجاح!";
+    }
+  </script>
 </body>
 </html>
